@@ -1,0 +1,30 @@
+{
+  "trailingSlash": "never",
+  "routes": [
+    { "route": "/login",           "redirect": "https://app.massustentable.cl/login",           "statusCode": 301 },
+    { "route": "/register",        "redirect": "https://app.massustentable.cl/register",        "statusCode": 301 },
+    { "route": "/forgot-password", "redirect": "https://app.massustentable.cl/forgot-password", "statusCode": 301 },
+    { "route": "/dashboard",       "redirect": "https://app.massustentable.cl/dashboard",       "statusCode": 301 },
+    { "route": "/bienvenida",      "redirect": "https://app.massustentable.cl/bienvenida",      "statusCode": 301 },
+    { "route": "/onboarding",      "redirect": "https://app.massustentable.cl/onboarding",      "statusCode": 301 },
+    { "route": "/autodiagnostico", "redirect": "https://app.massustentable.cl/autodiagnostico", "statusCode": 301 },
+    { "route": "/personalizacion", "redirect": "https://app.massustentable.cl/personalizacion", "statusCode": 301 },
+    { "route": "/perfil",          "redirect": "https://app.massustentable.cl/perfil",          "statusCode": 301 },
+    { "route": "/resultados",      "redirect": "https://app.massustentable.cl/resultados",      "statusCode": 301 },
+    { "route": "/ranking",         "redirect": "https://app.massustentable.cl/ranking",         "statusCode": 301 },
+    { "route": "/contenido",       "redirect": "https://app.massustentable.cl/contenido",       "statusCode": 301 },
+    { "route": "/hoja-de-ruta",    "redirect": "https://app.massustentable.cl/hoja-de-ruta",    "statusCode": 301 },
+    { "route": "/informe-mensual", "redirect": "https://app.massustentable.cl/informe-mensual", "statusCode": 301 },
+
+    { "route": "/css/*", "headers": { "Cache-Control": "public, max-age=604800" } },
+    { "route": "/js/*",  "headers": { "Cache-Control": "public, max-age=604800" } },
+    { "route": "/img/*", "headers": { "Cache-Control": "public, max-age=2592000" } }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/404.html" }
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  }
+}

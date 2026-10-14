@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Redirigiendo… | +Sustentable</title>
+<script>
+  /*
+   * La plataforma se trasladó a app.massustentable.cl.
+   * Toda ruta que no exista en la landing (p. ej. /autodiagnostico/xyz/seccion/2 o
+   * /reset-password?email=...) se reenvía a la app conservando ruta, parámetros y ancla.
+   */
+  (function () {
+    var APP = "https://app.massustentable.cl";
+    var destino = APP + window.location.pathname + window.location.search + window.location.hash;
+    window.location.replace(destino);
+  })();
+</script>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;color:#12233F;background:#F6F9FB;text-align:center;padding:24px}
+  a{color:#F0743C;font-weight:600}
+</style>
+</head>
+<body>
+  <p>La plataforma ahora está en <a href="https://app.massustentable.cl/login">app.massustentable.cl</a>.<br>
+  Si no eres redirigido automáticamente, <a href="https://app.massustentable.cl/login">haz clic aquí</a> o vuelve al <a href="/">inicio</a>.</p>
+</body>
+</html>
