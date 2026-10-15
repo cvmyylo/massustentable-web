@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
-# Pruebas de la landing independiente (massustentable.cl).
-# Uso: ./scripts/test.sh [base_url]   (por defecto http://localhost:4280 = emulador de Azure Static Web Apps)
-#      ./scripts/test.sh https://<preview>.azurestaticapps.net
+# Pruebas de la landing independiente (massustentable.cl) en Cloudflare Pages.
+# Uso: ./scripts/test.sh [base_url]
+#      Por defecto: http://localhost:8788 (wrangler pages dev)
+#      También sirve contra la URL de Cloudflare Pages:
+#      ./scripts/test.sh https://<proyecto>.pages.dev
 #      ./scripts/test.sh https://massustentable.cl
-BASE="${1:-http://localhost:4280}"
+BASE="${1:-http://localhost:8788}"
 APP="https://app.massustentable.cl"
 pass=0; fail=0
 ok()   { pass=$((pass+1)); printf '  OK    %s\n' "$1"; }
 bad()  { fail=$((fail+1)); printf '  FALLA %s\n' "$1"; }
 
-# page <ruta> : 200 y contiene la landing
+# page <ruta> : 200 o 308 canonical y contiene la landing
 page() {
-  local out code
-  out=$(curl -s -w '\n%{http_code}' "$BASE$1"); code=$(printf '%s' "$out" | tail -n1)
+  local out code loc
+  out=$(curl -s -L -w '\n%{http_code}' "$BASE$1"); code=$(printf '%s' "$out" | tail -n1)
   if [ "$code" = "200" ] && printf '%s' "$out" | grep -q 'class="slider-section"'; then ok "$1 → landing (200)"; else bad "$1 → esperado landing 200, obtenido $code"; fi
 }
 # asset <ruta> <content-type esperado (prefijo)>
@@ -53,17 +55,22 @@ asset "/img/logo-corfo.png" "image/png"
 asset "/img/logo-social-renovable.png" "image/png"
 asset "/robots.txt" "text/plain"
 asset "/sitemap.xml" ""
-echo "— Rutas antiguas de la app → 301 a app.massustentable.cl"
-for r in /login /register /forgot-password /dashboard /bienvenida /onboarding /autodiagnostico \
-         /personalizacion /perfil /resultados /ranking /contenido /hoja-de-ruta /informe-mensual; do
+
+echo "— Rutas antiguas de la app → 301 a app.massustentable.cl (Edge de Cloudflare)"
+for r in /login /register /forgot-password /reset-password /dashboard /bienvenida /onboarding \
+         /autodiagnostico /personalizacion /perfil /resultados /ranking /contenido \
+         /hoja-de-ruta /informe-mensual; do
   redirect "$r" "$APP$r"
 done
-echo "— Rutas anidadas o con parámetros → 404.html reenvía conservando todo"
-fallback "/autodiagnostico/Q+Av1_12_2025/seccion/1"
-fallback "/onboarding/resumen"
-fallback "/reset-password?email=a%40b.cl"
-fallback "/cuestionario/abc"
+
+echo "— Rutas dinámicas (splats) → 301 a app.massustentable.cl"
+redirect "/autodiagnostico/Q+Av1_12_2025/seccion/1" "$APP/autodiagnostico/Q+Av1_12_2025/seccion/1"
+redirect "/onboarding/resumen" "$APP/onboarding/resumen"
+redirect "/cuestionario/abc" "$APP/cuestionario/abc"
+
+echo "— Rutas desconocidas → 404.html reenvía conservando todo"
 fallback "/ruta-que-no-existe"
+fallback "/otra-ruta-rara"
 
 echo; echo "Resultado: $pass OK, $fail fallas"
 [ "$fail" -eq 0 ]

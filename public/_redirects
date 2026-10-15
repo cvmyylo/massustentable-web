@@ -1,0 +1,22 @@
+# Redirecciones de rutas antiguas de la app hacia app.massustentable.cl
+# Reglas estáticas (rutas principales)
+/login https://app.massustentable.cl/login 301
+/register https://app.massustentable.cl/register 301
+/forgot-password https://app.massustentable.cl/forgot-password 301
+/reset-password https://app.massustentable.cl/reset-password 301
+/dashboard https://app.massustentable.cl/dashboard 301
+/bienvenida https://app.massustentable.cl/bienvenida 301
+/onboarding https://app.massustentable.cl/onboarding 301
+/autodiagnostico https://app.massustentable.cl/autodiagnostico 301
+/personalizacion https://app.massustentable.cl/personalizacion 301
+/perfil https://app.massustentable.cl/perfil 301
+/resultados https://app.massustentable.cl/resultados 301
+/ranking https://app.massustentable.cl/ranking 301
+/contenido https://app.massustentable.cl/contenido 301
+/hoja-de-ruta https://app.massustentable.cl/hoja-de-ruta 301
+/informe-mensual https://app.massustentable.cl/informe-mensual 301
+
+# Reglas dinámicas (splats para subrutas de autodiagnóstico, cuestionario, etc.)
+/onboarding/* https://app.massustentable.cl/onboarding/:splat 301
+/autodiagnostico/* https://app.massustentable.cl/autodiagnostico/:splat 301
+/cuestionario/* https://app.massustentable.cl/cuestionario/:splat 301

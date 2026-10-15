@@ -1,74 +1,109 @@
 # +Sustentable — Landing (massustentable.cl)
 
-Sitio estático (HTML/CSS/JS vainilla, sin build) de la página principal de **+Sustentable**.
-La plataforma vive en un proyecto aparte: **https://app.massustentable.cl**.
+Sitio estático (HTML/CSS/JS vainilla, sin build) de la página principal de **+Sustentable**, optimizado para desplegarse en **Cloudflare Pages**.
+La plataforma web vive en un proyecto y subdominio aparte: **https://app.massustentable.cl**.
 
 ```
-massustentable.cl        → este repositorio (landing)
-app.massustentable.cl    → repositorio de la app (React + backend)
+massustentable.cl        → Cloudflare Pages (este repositorio: landing estática)
+app.massustentable.cl    → Azure (repositorio de la app: React + backend)
 ```
 
-## Estructura
+---
 
+## Estructura del Proyecto
+
+```text
+public/                       ← Directorio raíz de publicación en Cloudflare Pages
+├── index.html                Landing page principal
+├── 404.html                  Fallback: reenvía rutas desconocidas a app.massustentable.cl (conserva ruta, query y hash)
+├── _redirects                Redirecciones 301 directas en el Edge de Cloudflare (rutas antiguas de la app)
+├── _headers                  Cabeceras HTTP de seguridad (X-Content-Type-Options, Referrer-Policy) y caché
+├── css/styles.css            Estilos completos con paleta y tipografías centralizadas en :root
+├── js/main.js                Slider interactivo + scroll suave del logo (vanilla JS, sin librerías)
+├── img/                      Logotipos extraídos en PNG optimizado (logo, isotipo, Corfo, Social Renovable)
+├── robots.txt                Control de indexación para buscadores
+└── sitemap.xml               Mapa de sitio para Google Search Console
+scripts/
+└── test.sh                   Suite de pruebas automatizadas (33 validaciones de rutas, assets y redirecciones)
 ```
-public/                       ← lo único que se publica
-├── index.html                landing
-├── 404.html                  reenvía rutas desconocidas a app.massustentable.cl (conserva ruta y parámetros)
-├── css/styles.css            estilos; paleta y tipografías en :root
-├── js/main.js                slider + scroll del logo (sin dependencias)
-├── img/                      logos (extraídos del base64 del HTML v20)
-├── robots.txt / sitemap.xml  SEO
-└── staticwebapp.config.json  redirecciones 301 de rutas antiguas, 404, caché
-scripts/test.sh               pruebas automáticas (local, preview o producción)
-```
 
-## Ver en local
+---
 
-- Rápido: abrir `public/index.html` con doble clic (las rutas son relativas).
-- Igual que en Azure (incluye redirecciones y 404):
-  ```bash
-  npx @azure/static-web-apps-cli start public --port 4280
-  ./scripts/test.sh                 # contra http://localhost:4280
-  ```
+## Ver y Probar en Local
 
-## Enlaces a la app
+1. **Opción rápida:** Puedes abrir `public/index.html` con doble clic en tu navegador (todas las rutas relativas funcionan).
+2. **Con el emulador oficial de Cloudflare Pages (Wrangler):**
+   Permite comprobar las redirecciones 301 de `_redirects` y las cabeceras de `_headers` de forma idéntica a producción:
+   ```bash
+   npx wrangler pages dev public --port 8788
+   ```
+   Y en otra terminal puedes ejecutar el script de pruebas automatizado:
+   ```bash
+   ./scripts/test.sh http://localhost:8788
+   ```
 
-Todos los botones "Entrar a la plataforma" apuntan a `https://app.massustentable.cl/login`.
-Si cambia el subdominio, buscar y reemplazar `https://app.massustentable.cl` en `public/`.
+---
 
-**Rutas antiguas:** hoy la app está en `massustentable.cl/login`, `/dashboard`, etc. Cuando la landing ocupe el
-dominio raíz, esas URLs (marcadores, correos ya enviados) siguen funcionando:
-- Rutas de primer nivel (`/login`, `/dashboard`, `/bienvenida`, …) → **301** a la misma ruta en la app.
-- Rutas anidadas o con parámetros (`/autodiagnostico/…/seccion/2`, `/reset-password?email=…`) → `404.html`
-  reenvía por JS conservando ruta, parámetros y ancla.
+## Despliegue en Cloudflare Pages (Paso a Paso)
 
-## Despliegue (Azure Static Web Apps, plan Free)
+### 1. Subir a tu GitHub
+1. Crea un repositorio en tu perfil de GitHub (por ejemplo `massustentable-landing`).
+2. Sube el contenido de esta carpeta:
+   ```bash
+   git remote add origin https://github.com/TU_USUARIO/massustentable-landing.git
+   git push -u origin main
+   ```
 
-1. Crear un recurso **Static Web App** nuevo y conectarlo a este repositorio (GitHub).
-2. Detalles de build: *App location* `public`, *Api location* vacío, *Output location* vacío.
-   Azure genera el workflow de GitHub Actions; no hay paso de build.
-3. Cada push a `main` publica; cada Pull Request crea un entorno de preview con URL propia
-   (probar con `./scripts/test.sh https://<preview>.azurestaticapps.net`).
+### 2. Conectar a Cloudflare Pages
+1. Inicia sesión en Cloudflare con la cuenta a la que te invitaron.
+2. Ve a **Workers & Pages** → **Create application** → pestaña **Pages** → **Connect to Git**.
+3. Selecciona tu repositorio de GitHub `massustentable-landing`.
+4. En la configuración del build:
+   - **Framework preset:** `None`
+   - **Build command:** *(dejar vacío)*
+   - **Build output directory:** `public`
+   - **Root directory:** *(dejar vacío o `/`)*
+5. Haz clic en **Save and Deploy**. En menos de 30 segundos tu landing tendrá una URL pública temporal tipo `https://massustentable-landing.pages.dev`.
 
-## Migración de dominio (orden recomendado, sin caída)
+### 3. Asociar el Dominio Personalizado
+En el proyecto de Pages en Cloudflare:
+1. Ve a la pestaña **Custom domains** → **Set up a custom domain**.
+2. Ingresa `massustentable.cl` (y opcionalmente `www.massustentable.cl`).
+3. Como la zona DNS de `massustentable.cl` ya está en la misma cuenta de Cloudflare, la activación es instantánea y automática (Cloudflare gestiona el SSL y el DNS por ti).
 
-| # | Quién | Paso |
+---
+
+## Migración de Dominio (Sin Tiempo de Caída)
+
+Para que el paso de la app hacia el subdominio `app.massustentable.cl` sea 100% fluido:
+
+| # | Responsable | Paso |
 |---|---|---|
-| 1 | Equipo app | Agregar dominio personalizado `app.massustentable.cl` a la Static Web App **de la app** (Cloudflare: `CNAME app → <app>.azurestaticapps.net`, en *DNS only* mientras Azure valida). |
-| 2 | Equipo app | Backend `main.py` → `CORSMiddleware.allow_origins`: agregar `"https://app.massustentable.cl"` y redesplegar. Sin esto la app no puede llamar a la API desde el subdominio. |
-| 3 | Equipo app | Google Cloud Console → credencial OAuth → **Orígenes de JavaScript autorizados**: agregar `https://app.massustentable.cl` (la app usa Google Identity Services, no requiere redirect URI). |
-| 4 | Equipo app | Variable de entorno del backend `FRONTEND_URL=https://app.massustentable.cl` (enlaces en correos). |
-| 5 | Todos | Probar la app completa en `app.massustentable.cl`: login con correo, login con Google, registro, recuperar contraseña, dashboard. `massustentable.cl` sigue mostrando la app mientras tanto. |
-| 6 | Landing | Desplegar este repo (sección anterior) y revisarlo en su URL `*.azurestaticapps.net`. |
-| 7 | Equipo app + Landing | Quitar `massustentable.cl` / `www` de la SWA de la app y agregarlos a la SWA de la landing (Cloudflare: `CNAME @` con *CNAME flattening* y validación por `TXT`; `www` → `CNAME`). |
-| 8 | Landing | `./scripts/test.sh https://massustentable.cl` y revisar el clic en "Entrar a la plataforma". |
+| 1 | **Equipo App** | En su Azure Static Web App, agregar el dominio personalizado `app.massustentable.cl` (en Cloudflare DNS: crear registro `CNAME app` apuntando al host de Azure). |
+| 2 | **Equipo App** | En `backend/main.py` (`CORSMiddleware.allow_origins`), agregar `"https://app.massustentable.cl"` para que la API permita peticiones desde el subdominio. |
+| 3 | **Equipo App** | En Google Cloud Console (OAuth 2.0), agregar `https://app.massustentable.cl` a los **Orígenes de JavaScript autorizados** para que el login con Google funcione. |
+| 4 | **Equipo App** | Actualizar la variable de entorno del backend `FRONTEND_URL=https://app.massustentable.cl` (enlaces de correos). |
+| 5 | **Todos** | Probar la app en `app.massustentable.cl` (login, dashboard, autodiagnóstico). Durante esta prueba, `massustentable.cl` sigue atendiendo con normalidad. |
+| 6 | **Landing** | Desplegar este repositorio en Cloudflare Pages y verificar con `./scripts/test.sh https://<proyecto>.pages.dev`. |
+| 7 | **Landing / DNS** | En Cloudflare Pages, vincular el dominio `massustentable.cl`. A partir de este momento, la landing atiende la raíz y las rutas antiguas redirigen automáticamente con 301 a `app.massustentable.cl`. |
+| 8 | **Landing** | Ejecutar `./scripts/test.sh https://massustentable.cl` para confirmar que todo responde en producción. |
 
-> **Aviso a usuarios:** la sesión se guarda en `localStorage`, que es por dominio. Al pasar a
-> `app.massustentable.cl` cada usuario deberá **iniciar sesión una vez más**. Sus datos no se pierden.
+> **Nota para usuarios:** Al migrar a `app.massustentable.cl`, el `localStorage` del navegador es independiente para cada subdominio. Los usuarios existentes deberán iniciar sesión una vez más en `app.massustentable.cl`. Sus cuentas y datos no se ven afectados.
 
-## Pendientes de contenido
+---
 
-- URL del video "Cómo funciona" (botón "Ver video").
-- Destino definitivo de "Conversemos" (hoy `mailto:contacto@socialrenovable.cl`).
-- URLs de Política de privacidad y Términos y condiciones.
-- Imagen 1200×630 para `og:image` (vista previa al compartir en WhatsApp/LinkedIn).
+## SEO y Google Search Console (GSC)
+
+- **Propiedad recomendada:** Crear en Google Search Console una propiedad de tipo **Dominio** (`massustentable.cl`). Esto cubre automáticamente tanto la landing como el subdominio `app.massustentable.cl`.
+- **Verificación:** Se verifica mediante un registro DNS de tipo `TXT` en Cloudflare. Como la cuenta de Cloudflare ya gestiona el dominio, se añade en segundos.
+- **Titularidad:** Se recomienda que la cuenta propietaria en Google Search Console sea una cuenta institucional del proyecto (ej. de Social Renovable) y que te agreguen como usuario con permisos completos.
+- **Sitemap:** Una vez verificada la propiedad en GSC, enviar `https://massustentable.cl/sitemap.xml`.
+
+---
+
+## Pendientes de Contenido
+
+- Enlace del video de "Cómo funciona" (botón *"Ver video"* en el slider).
+- Destino definitivo de *"Conversemos"* (actualmente abre correo a `mailto:contacto@socialrenovable.cl`).
+- Enlaces definitivos de *Política de privacidad* y *Términos y condiciones*.
+- Imagen de 1200×630 px para la metaetiqueta `og:image` (tarjeta al compartir en WhatsApp / LinkedIn).
