@@ -104,6 +104,6 @@ Para que el paso de la app hacia el subdominio `app.massustentable.cl` sea 100% 
 ## Pendientes de Contenido
 
 - Enlace del video de "Cómo funciona" (botón *"Ver video"* en el slider).
-- Destino definitivo de *"Conversemos"* (actualmente abre correo a `mailto:contacto@socialrenovable.cl`).
+- Destino de *"Conversemos"* (`mailto:contacto@massustentable.cl`).
 - Enlaces definitivos de *Política de privacidad* y *Términos y condiciones*.
 - Imagen de 1200×630 px para la metaetiqueta `og:image` (tarjeta al compartir en WhatsApp / LinkedIn).
