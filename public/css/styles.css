@@ -15,12 +15,12 @@ body{margin:0;background:#fff;color:var(--tinta);font-family:var(--texto);font-s
 a{color:inherit}
 
 header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:104px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:104px}
 header img{height:60px;width:auto;display:block}
-.marca-link{display:flex;align-items:center;border-radius:10px;padding:4px;margin:-4px;transition:opacity .15s,transform .1s;cursor:pointer}
+.marca-link{display:flex;align-items:center;border-radius:10px;padding:4px;margin:-4px;transition:opacity .15s,transform .1s;cursor:pointer;flex-shrink:0}
 .marca-link:hover{opacity:.82}
 .marca-link:active{transform:scale(.97)}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--naranja);color:#fff;text-decoration:none;padding:10px 20px;border-radius:10px;font-size:14px;font-weight:600;transition:background .16s}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--naranja);color:#fff;text-decoration:none;padding:10px 20px;border-radius:10px;font-size:14px;font-weight:600;white-space:nowrap;flex-shrink:0;transition:background .16s}
 .nav-cta:hover{background:var(--naranja-h)}
 
 h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.4vw,40px);line-height:1.14;letter-spacing:-.01em;margin:0 0 16px;color:var(--navy)}
@@ -80,6 +80,7 @@ section{padding:80px 0}
 .card-3-inner{justify-content:space-between;position:relative;z-index:2;padding:0 84px}
 .card-3 .card-text{flex:1 1 auto;min-width:0;max-width:540px}
 .card-3 .card-text h3{max-width:32ch}
+.card-3 .card-text p{margin-bottom:0}
 .card-3 .mini-cta{margin-left:24px;flex-shrink:0}
 .card-3 .motivo-navy{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:280px;opacity:.14;z-index:1;pointer-events:none}
 
@@ -110,21 +111,34 @@ section{padding:80px 0}
 }
 
 @media(max-width:860px){
+  .wrap{padding:0 20px}
+  header .wrap{height:76px;gap:14px}
+  header img{height:40px}
+  .nav-cta{padding:9px 14px;font-size:13px;border-radius:9px}
+  .slider-section{padding:28px 0 6px}
   .slider{height:auto;border-radius:16px;transition:height .35s cubic-bezier(.2,.7,.3,1)}
+  .slider-track{height:auto;align-items:flex-start}
   .slide{height:auto}
-  .card-inner{flex-direction:column;align-items:flex-start;text-align:left;gap:18px;padding:30px 46px 34px;height:auto}
-  .ring-icon{width:74px;height:74px}
-  .ring-mark{width:28px;height:28px}
-  .card-2-inner{flex-direction:column-reverse}
-  .card-2-inner .card-text{padding:26px 26px 30px}
+  .card-inner{flex-direction:column;align-items:flex-start;text-align:left;gap:18px;padding:28px 48px 32px;height:auto}
+  .ring-icon{width:70px;height:70px}
+  .ring-mark{width:26px;height:26px}
+  .card-2-inner{flex-direction:column-reverse;padding:0;gap:0}
+  .card-2-inner .card-text{padding:24px 48px 30px}
   .card-2-inner .card-media{width:100%;height:170px;flex:0 0 auto}
-  .card-3-inner{flex-direction:column;align-items:flex-start;gap:20px;padding:30px 26px 34px}
-  .card-3 .motivo-navy{width:200px;right:-60px}
-  .slider-arrow{width:32px;height:32px;top:38px;transform:none}
+  .card-3-inner{flex-direction:column;align-items:flex-start;gap:20px;padding:28px 48px 32px}
+  .card-3 .mini-cta{margin-left:0}
+  .card-3 .motivo-navy{width:190px;right:-50px}
+  .slider-arrow{width:30px;height:30px;top:50%;transform:translateY(-50%)}
   .slider-arrow.prev{left:8px}
   .slider-arrow.next{right:8px}
-  .slider-arrow:hover{transform:scale(1.06)}
-  .slider-arrow:active{transform:scale(.96)}
+  .slider-arrow:hover{transform:translateY(-50%) scale(1.06)}
+  .slider-arrow:active{transform:translateY(-50%) scale(.96)}
+}
+@media(max-width:360px){
+  header img{height:34px}
+  .nav-cta{padding:8px 11px;font-size:12px}
+  .card-inner,.card-3-inner{padding:24px 44px 28px}
+  .card-2-inner .card-text{padding:22px 44px 26px}
 }
 
 @media(prefers-reduced-motion:reduce){.slider-track{transition:none}}

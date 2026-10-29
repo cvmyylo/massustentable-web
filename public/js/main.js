@@ -25,7 +25,11 @@
   function syncHeight(){
     if(mq.matches){
       var active = track.children[idx];
-      if(active) slider.style.height = active.offsetHeight + 'px';
+      if(active){
+        var inner = active.querySelector('.card-inner');
+        var h = inner ? inner.offsetHeight : active.offsetHeight;
+        slider.style.height = h + 'px';
+      }
     } else {
       slider.style.height = '';
     }
