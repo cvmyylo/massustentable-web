@@ -260,3 +260,21 @@ section{padding:80px 0}
     .f3-top { grid-template-columns: 1fr; }
     .f3-dark, .f3-light { padding-left: 22px; padding-right: 22px; }
   }
+
+/* --- Páginas legales (términos y privacidad) --- */
+.legal-wrap { max-width: 860px; margin: 0 auto; padding: 48px 34px 90px; }
+.legal-meta { display: flex; flex-wrap: wrap; gap: 14px 24px; font-size: 13.5px; color: var(--gris); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--linea); }
+.legal-meta span strong { color: var(--navy); }
+.legal-content h1 { font-family: var(--display); font-size: clamp(26px, 3.4vw, 38px); color: var(--navy); margin: 0 0 16px; line-height: 1.2; }
+.legal-content h2 { font-family: var(--display); font-size: 20px; color: var(--navy); margin: 38px 0 14px; border-bottom: 2px solid var(--velo); padding-bottom: 8px; }
+.legal-content h3 { font-family: var(--display); font-size: 16.5px; color: var(--navy); margin: 24px 0 10px; }
+.legal-content p { font-size: 15px; line-height: 1.7; color: #2B3A48; max-width: none; margin-bottom: 14px; }
+.legal-content ul, .legal-content ol { padding-left: 24px; margin: 0 0 18px; font-size: 15px; line-height: 1.7; color: #2B3A48; }
+.legal-content li { margin-bottom: 6px; }
+.legal-content table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+.legal-content th, .legal-content td { border: 1px solid var(--linea); padding: 12px 14px; text-align: left; vertical-align: top; }
+.legal-content th { background: var(--velo); color: var(--navy); font-weight: 700; font-family: var(--display); }
+.legal-content td { background: #fff; line-height: 1.6; }
+.legal-content .highlight-box { background: var(--velo); border-left: 4px solid var(--celeste); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 14.5px; }
+.btn-back-home { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: var(--naranja); text-decoration: none; margin-bottom: 24px; transition: color .15s; }
+.btn-back-home:hover { text-decoration: underline; color: var(--naranja-h); }

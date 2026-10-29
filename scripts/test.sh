@@ -23,11 +23,11 @@ asset() {
   read -r code ct < <(curl -s -o /dev/null -w '%{http_code} %{content_type}' "$BASE$1")
   if [ "$code" = "200" ] && [[ "$ct" == $2* ]]; then ok "$1 → $code $ct"; else bad "$1 → esperado 200 $2, obtenido $code $ct"; fi
 }
-# redirect <ruta> <destino exacto>
+# redirect <ruta> <destino exacto o relativo>
 redirect() {
   local code loc
   read -r code loc < <(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$BASE$1")
-  if [[ "$code" =~ ^30[1278]$ ]] && [ "$loc" = "$2" ]; then ok "$1 → $code $loc"; else bad "$1 → esperado 301 $2, obtenido $code $loc"; fi
+  if [[ "$code" =~ ^30[1278]$ ]] && { [ "$loc" = "$2" ] || [ "$loc" = "$BASE$2" ]; }; then ok "$1 → $code $loc"; else bad "$1 → esperado 301 $2, obtenido $code $loc"; fi
 }
 # fallback <ruta> : la página 404 reenvía a la app por JS (conserva ruta y parámetros)
 fallback() {
@@ -46,6 +46,16 @@ links() {
 
 echo "Base: $BASE"
 echo "— Landing";              page "/"; page "/index.html"; page "/?utm_source=test"; links
+echo "— Páginas legales"
+legal_page() {
+  local out code
+  out=$(curl -s -L -w '\n%{http_code}' "$BASE$1"); code=$(printf '%s' "$out" | tail -n1)
+  if [ "$code" = "200" ] && printf '%s' "$out" | grep -q "$2"; then ok "$1 → 200 ($2)"; else bad "$1 → esperado 200 con '$2', obtenido $code"; fi
+}
+legal_page "/privacidad" "Política de Privacidad"
+legal_page "/terminos" "Términos y Condiciones"
+redirect "/politica-de-privacidad" "/privacidad"
+redirect "/terminos-y-condiciones" "/terminos"
 echo "— Recursos"
 asset "/css/styles.css" "text/css"
 asset "/js/main.js" "" # text/javascript o application/javascript, ambos válidos

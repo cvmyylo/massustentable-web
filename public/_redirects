@@ -16,6 +16,10 @@
 /hoja-de-ruta https://app.massustentable.cl/hoja-de-ruta 301
 /informe-mensual https://app.massustentable.cl/informe-mensual 301
 
+# Alias para páginas legales
+/politica-de-privacidad /privacidad 301
+/terminos-y-condiciones /terminos 301
+
 # Reglas dinámicas (splats para subrutas de autodiagnóstico, cuestionario, etc.)
 /onboarding/* https://app.massustentable.cl/onboarding/:splat 301
 /autodiagnostico/* https://app.massustentable.cl/autodiagnostico/:splat 301
