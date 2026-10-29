@@ -11,7 +11,147 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=2">
+<style>
+/* Estilos dedicados para páginas legales */
+.legal-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #1b3d6b 100%);
+  color: #fff;
+  padding: 56px 0 44px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.legal-hero h1 {
+  color: #fff;
+  font-family: var(--display);
+  font-size: clamp(26px, 3.8vw, 40px);
+  margin: 12px 0 16px;
+  line-height: 1.15;
+}
+.legal-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #B9CBE0;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  transition: color 0.15s;
+}
+.legal-back-link:hover {
+  color: #fff;
+}
+.legal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  font-size: 13.5px;
+  color: #B9CBE0;
+}
+.legal-meta strong {
+  color: #fff;
+}
+.legal-meta .badge {
+  background: rgba(59, 156, 217, 0.25);
+  color: #8FD1F0;
+  border: 1px solid rgba(59, 156, 217, 0.45);
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.legal-body {
+  background: var(--velo);
+  padding: 48px 0 84px;
+  border-bottom: 1px solid var(--linea);
+}
+.legal-card {
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  box-shadow: 0 16px 45px -20px rgba(18, 35, 63, 0.12);
+  padding: 56px 64px;
+}
+.legal-card h2 {
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 42px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--velo);
+}
+.legal-card h2:first-of-type {
+  margin-top: 0;
+}
+.legal-card h3 {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 26px 0 10px;
+}
+.legal-card p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #2B3A48;
+  max-width: none;
+  margin-bottom: 14px;
+}
+.legal-card ul, .legal-card ol {
+  padding-left: 24px;
+  margin: 0 0 18px;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #2B3A48;
+}
+.legal-card li {
+  margin-bottom: 6px;
+}
+.legal-card a {
+  color: var(--naranja);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal-card a:hover {
+  color: var(--naranja-h);
+}
+.legal-card .highlight-box {
+  background: #F0F6FA;
+  border-left: 4px solid var(--celeste);
+  padding: 18px 22px;
+  border-radius: 0 10px 10px 0;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+@media (max-width: 860px) {
+  .legal-card {
+    padding: 36px 24px;
+    border-radius: 16px;
+  }
+  .legal-hero {
+    padding: 40px 0 32px;
+  }
+  .legal-body {
+    padding: 32px 0 60px;
+  }
+}
+@media (max-width: 560px) {
+  .legal-card {
+    padding: 26px 16px;
+  }
+  .legal-card h2 {
+    font-size: 19px;
+  }
+  .legal-card p, .legal-card ul, .legal-card ol {
+    font-size: 14.5px;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -22,176 +162,185 @@
   <a href="https://app.massustentable.cl/login" target="_blank" rel="noopener noreferrer" class="nav-cta">Entrar a la plataforma</a>
 </div></header>
 
-<main class="legal-wrap">
-  <a href="/" class="btn-back-home">&larr; Volver al inicio</a>
-  
-  <article class="legal-content">
-    <h1>Términos y Condiciones de Uso de Más Sustentable</h1>
-    
+<section class="legal-hero">
+  <div class="wrap">
+    <a href="/" class="legal-back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Volver al inicio
+    </a>
+    <span class="eyebrow" style="color: #8FD1F0;">Marco Legal</span>
+    <h1>Términos y Condiciones de Uso</h1>
     <div class="legal-meta">
-      <span><strong>Versión:</strong> 1.0</span>
-      <span><strong>Fecha de entrada en vigencia:</strong> 01 de julio de 2026</span>
+      <span class="badge">Versión 1.0</span>
+      <span>Fecha de entrada en vigencia: <strong>01 de julio de 2026</strong></span>
+      <span>Proveedor: <strong>IMPACTA GLOBAL SPA</strong></span>
     </div>
+  </div>
+</section>
 
-    <h2>1. Identificación del proveedor</h2>
-    <p>Massustentable.cl es una plataforma digital operada por <strong>IMPACTA GLOBAL SPA</strong>, RUT 78.288.504-9, con domicilio en Dario Salas 1111, Of 1401B, Coquimbo, en adelante, “Más Sustentable”, “la Plataforma” o “el Proveedor”.</p>
-    <p>Para consultas, solicitudes o reclamos, los usuarios podrán comunicarse mediante:</p>
-    <ul>
-      <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a></li>
-      <li><strong>Sitio web:</strong> <a href="https://www.massustentable.cl">www.massustentable.cl</a></li>
-      <li><strong>Dirección:</strong> Dario Salas 1111, Of 1401B, Coquimbo</li>
-    </ul>
-
-    <h2>2. Aceptación de los Términos y Condiciones</h2>
-    <p>Estos Términos y Condiciones regulan el acceso, registro, contratación y uso de Más Sustentable. Al crear una cuenta, marcar la casilla de aceptación, contratar un plan o utilizar la Plataforma, la persona declara que:</p>
-    <ol type="a">
-      <li>Ha leído y comprendido estos Términos y Condiciones.</li>
-      <li>Acepta quedar obligada por ellos.</li>
-      <li>Cuenta con capacidad legal suficiente para contratar.</li>
-      <li>Si actúa en representación de una organización, posee las facultades necesarias para obligarla.</li>
-    </ol>
-    <p>Quien no esté de acuerdo con estas condiciones deberá abstenerse de utilizar la Plataforma.</p>
-
-    <h2>3. Definiciones</h2>
-    <ul>
-      <li><strong>Cliente:</strong> persona natural o jurídica que contrata un plan o servicio de Más Sustentable.</li>
-      <li><strong>Usuario:</strong> persona que accede a la Plataforma, ya sea como Cliente, administrador, integrante de una organización, colaborador o invitado.</li>
-      <li><strong>Cuenta:</strong> perfil digital mediante el cual un Usuario accede a las funcionalidades de la Plataforma.</li>
-      <li><strong>Organización:</strong> empresa, cooperativa, institución, emprendimiento u otra entidad que utiliza Más Sustentable.</li>
-      <li><strong>Contenido del Usuario:</strong> información, documentos, respuestas, indicadores, archivos, imágenes, datos y demás materiales incorporados por un Usuario.</li>
-      <li><strong>Resultados:</strong> diagnósticos, reportes, indicadores, hojas de ruta, recomendaciones, rankings, análisis, contenidos educativos y demás productos generados por la Plataforma.</li>
-      <li><strong>Plan:</strong> conjunto de funcionalidades, límites, condiciones, precio y período de contratación seleccionado por el Cliente.</li>
-    </ul>
-
-    <h2>4. Objeto de la Plataforma</h2>
-    <p>Más Sustentable proporciona herramientas digitales orientadas a apoyar procesos de sostenibilidad, economía circular, gestión ambiental, impacto social, gobernanza y materias relacionadas.</p>
-    <p>Según el plan contratado, la Plataforma podrá incluir autodiagnósticos y evaluaciones, indicadores y paneles de seguimiento, recomendaciones generadas mediante reglas automatizadas o IA, hojas de ruta y planes de mejora, recursos formativos y cápsulas de aprendizaje, generación y descarga de reportes, comparaciones y rankings regionales, y gestión de organizaciones, equipos y usuarios.</p>
-
-    <h2>5. Naturaleza de los Resultados</h2>
-    <p>Los diagnósticos, recomendaciones, puntajes, reportes y demás Resultados tienen <strong>carácter informativo</strong> y constituyen herramientas de apoyo para la gestión y la toma de decisiones.</p>
-    <div class="highlight-box">
-      <strong>Los Resultados:</strong>
+<section class="legal-body">
+  <div class="wrap">
+    <article class="legal-card">
+      <h2>1. Identificación del proveedor</h2>
+      <p>Massustentable.cl es una plataforma digital operada por <strong>IMPACTA GLOBAL SPA</strong>, RUT 78.288.504-9, con domicilio en Dario Salas 1111, Of 1401B, Coquimbo, en adelante, “Más Sustentable”, “la Plataforma” o “el Proveedor”.</p>
+      <p>Para consultas, solicitudes o reclamos, los usuarios podrán comunicarse mediante:</p>
       <ul>
-        <li>No constituyen una certificación ambiental, social, financiera o jurídica, salvo indicación expresa en contrario.</li>
-        <li>No garantizan el cumplimiento de una norma, estándar, certificación o requisito legal específico.</li>
-        <li>No sustituyen una auditoría, evaluación técnica o asesoría profesional especializada.</li>
-        <li>Dependen de la exactitud y veracidad de la información ingresada por los Usuarios.</li>
+        <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a></li>
+        <li><strong>Sitio web:</strong> <a href="https://www.massustentable.cl">www.massustentable.cl</a></li>
+        <li><strong>Dirección:</strong> Dario Salas 1111, Of 1401B, Coquimbo</li>
       </ul>
-      El Cliente es responsable de evaluar los Resultados antes de adoptar decisiones de cualquier naturaleza.
-    </div>
 
-    <h2>6. Registro y creación de cuentas</h2>
-    <p>El Usuario deberá proporcionar información verídica, exacta y completa. El Usuario es responsable de resguardar la confidencialidad de su contraseña, impedir accesos no autorizados e informar inmediatamente cualquier vulneración. Las cuentas son personales e intransferibles.</p>
+      <h2>2. Aceptación de los Términos y Condiciones</h2>
+      <p>Estos Términos y Condiciones regulan el acceso, registro, contratación y uso de Más Sustentable. Al crear una cuenta, marcar la casilla de aceptación, contratar un plan o utilizar la Plataforma, la persona declara que:</p>
+      <ol type="a">
+        <li>Ha leído y comprendido estos Términos y Condiciones.</li>
+        <li>Acepta quedar obligada por ellos.</li>
+        <li>Cuenta con capacidad legal suficiente para contratar.</li>
+        <li>Si actúa en representación de una organización, posee las facultades necesarias para obligarla.</li>
+      </ol>
+      <p>Quien no esté de acuerdo con estas condiciones deberá abstenerse de utilizar la Plataforma.</p>
 
-    <h2>7. Cuentas de organizaciones</h2>
-    <p>Una Organización podrá designar administradores autorizados para incorporar o eliminar usuarios, asignar permisos, consultar información ingresada por sus integrantes y administrar planes. La Organización es responsable de definir roles y accesos.</p>
+      <h2>3. Definiciones</h2>
+      <ul>
+        <li><strong>Cliente:</strong> persona natural o jurídica que contrata un plan o servicio de Más Sustentable.</li>
+        <li><strong>Usuario:</strong> persona que accede a la Plataforma, ya sea como Cliente, administrador, integrante de una organización, colaborador o invitado.</li>
+        <li><strong>Cuenta:</strong> perfil digital mediante el cual un Usuario accede a las funcionalidades de la Plataforma.</li>
+        <li><strong>Organización:</strong> empresa, cooperativa, institución, emprendimiento u otra entidad que utiliza Más Sustentable.</li>
+        <li><strong>Contenido del Usuario:</strong> información, documentos, respuestas, indicadores, archivos, imágenes, datos y demás materiales incorporados por un Usuario.</li>
+        <li><strong>Resultados:</strong> diagnósticos, reportes, indicadores, hojas de ruta, recomendaciones, rankings, análisis, contenidos educativos y demás productos generados por la Plataforma.</li>
+        <li><strong>Plan:</strong> conjunto de funcionalidades, límites, condiciones, precio y período de contratación seleccionado por el Cliente.</li>
+      </ul>
 
-    <h2>8. Uso permitido</h2>
-    <p>El Usuario podrá utilizar Más Sustentable exclusivamente para fines lícitos. El Cliente recibe una autorización limitada, no exclusiva, revocable, no sublicenciable y no transferible para utilizar la Plataforma durante la vigencia de su plan, sin que esto implique cesión de derechos de propiedad intelectual.</p>
+      <h2>4. Objeto de la Plataforma</h2>
+      <p>Más Sustentable proporciona herramientas digitales orientadas a apoyar procesos de sostenibilidad, economía circular, gestión ambiental, impacto social, gobernanza y materias relacionadas.</p>
+      <p>Según el plan contratado, la Plataforma podrá incluir autodiagnósticos y evaluaciones, indicadores y paneles de seguimiento, recomendaciones generadas mediante reglas automatizadas o IA, hojas de ruta y planes de mejora, recursos formativos y cápsulas de aprendizaje, generación y descarga de reportes, comparaciones y rankings regionales, y gestión de organizaciones, equipos y usuarios.</p>
 
-    <h2>9. Usos prohibidos</h2>
-    <p>Queda estrictamente prohibido:</p>
-    <ol type="a">
-      <li>Utilizar la Plataforma para fines ilegales o fraudulentos.</li>
-      <li>Ingresar información falsa para manipular diagnósticos o rankings.</li>
-      <li>Suplantar la identidad de personas u organizaciones.</li>
-      <li>Acceder a sistemas o cuentas ajenas sin autorización.</li>
-      <li>Descompilar, realizar ingeniería inversa o extraer código fuente.</li>
-      <li>Extraer datos masivos mediante scraping, bots o automatizaciones no autorizadas.</li>
-      <li>Interferir con la disponibilidad, capacidad o seguridad del servicio.</li>
-      <li>Introducir malware o código malicioso.</li>
-      <li>Utilizar Resultados para emitir afirmaciones falsas o engañosas.</li>
-      <li>Revender o sublicenciar el acceso sin autorización previa por escrito.</li>
-    </ol>
+      <h2>5. Naturaleza de los Resultados</h2>
+      <p>Los diagnósticos, recomendaciones, puntajes, reportes y demás Resultados tienen <strong>carácter informativo</strong> y constituyen herramientas de apoyo para la gestión y la toma de decisiones.</p>
+      <div class="highlight-box">
+        <strong>Los Resultados:</strong>
+        <ul>
+          <li>No constituyen una certificación ambiental, social, financiera o jurídica, salvo que se indique expresamente lo contrario.</li>
+          <li>No garantizan el cumplimiento de una norma, estándar, certificación o requisito legal específico.</li>
+          <li>No sustituyen una auditoría, evaluación técnica o asesoría profesional especializada.</li>
+          <li>Dependen de la exactitud y veracidad de la información ingresada por los Usuarios.</li>
+        </ul>
+        El Cliente es responsable de evaluar los Resultados antes de adoptar decisiones comerciales, financieras o de cualquier índole.
+      </div>
 
-    <h2>10. Información ingresada por los Usuarios</h2>
-    <p>Los Usuarios conservan la titularidad de los derechos sobre el Contenido del Usuario y otorgan a Más Sustentable una autorización limitada para almacenarlo, procesarlo y respaldarlo únicamente con el fin de prestar el servicio, generar reportes, brindar soporte y cumplir obligaciones legales.</p>
+      <h2>6. Registro y creación de cuentas</h2>
+      <p>El Usuario deberá proporcionar información verídica, exacta y completa. El Usuario es responsable de resguardar la confidencialidad de su contraseña, impedir accesos no autorizados e informar inmediatamente cualquier vulneración. Las cuentas son personales e intransferibles.</p>
 
-    <h2>11. Datos personales y privacidad</h2>
-    <p>El tratamiento de datos personales se rige por la <a href="/privacidad">Política de Privacidad y Uso de Datos</a> de Más Sustentable, la cual forma parte integral de estos Términos.</p>
+      <h2>7. Cuentas de organizaciones</h2>
+      <p>Una Organización podrá designar administradores autorizados para incorporar o eliminar usuarios, asignar permisos, consultar información ingresada por sus integrantes y administrar planes. La Organización es responsable de definir roles y accesos.</p>
 
-    <h2>12. Sistemas automatizados e inteligencia artificial</h2>
-    <p>La Plataforma podrá utilizar sistemas automatizados o modelos de IA para analizar respuestas y formular sugerencias. El Usuario reconoce que estos sistemas son herramientas complementarias que requieren revisión humana y no sustituyen el criterio profesional.</p>
+      <h2>8. Uso permitido</h2>
+      <p>El Usuario podrá utilizar Más Sustentable exclusivamente para fines lícitos. El Cliente recibe una autorización limitada, no exclusiva, revocable, no sublicenciable y no transferible para utilizar la Plataforma durante la vigencia de su plan, sin que esto implique cesión de derechos de propiedad intelectual.</p>
 
-    <h2>13. Planes, precios y contratación</h2>
-    <p>Los precios, modalidades de pago, periodicidad y condiciones se informarán antes de contratar. En caso de contradicción con propuestas particulares o cotizaciones acordadas por escrito, prevalecerán las condiciones particulares acordadas.</p>
+      <h2>9. Usos prohibidos</h2>
+      <p>Queda estrictamente prohibido:</p>
+      <ol type="a">
+        <li>Utilizar la Plataforma para fines ilegales o fraudulentos.</li>
+        <li>Ingresar información falsa para manipular diagnósticos o rankings.</li>
+        <li>Suplantar la identidad de personas u organizaciones.</li>
+        <li>Acceder a sistemas o cuentas ajenas sin autorización.</li>
+        <li>Descompilar, realizar ingeniería inversa o extraer código fuente.</li>
+        <li>Extraer datos masivos mediante scraping, bots o automatizaciones no autorizadas.</li>
+        <li>Interferir con la disponibilidad, capacidad o seguridad del servicio.</li>
+        <li>Introducir malware o código malicioso.</li>
+        <li>Utilizar Resultados para emitir afirmaciones falsas o engañosas.</li>
+        <li>Revender o sublicenciar el acceso sin autorización previa por escrito.</li>
+      </ol>
 
-    <h2>14. Pagos y facturación</h2>
-    <p>El Cliente pagará los valores correspondientes al plan seleccionado a través de los medios autorizados. Ante incumplimientos de pago, Más Sustentable podrá suspender temporalmente el acceso previo aviso al correo registrado.</p>
+      <h2>10. Información ingresada por los Usuarios</h2>
+      <p>Los Usuarios conservan la titularidad de los derechos sobre el Contenido del Usuario y otorgan a Más Sustentable una autorización limitada para almacenarlo, procesarlo y respaldarlo únicamente con el fin de prestar el servicio, generar reportes, brindar soporte y cumplir obligaciones legales.</p>
 
-    <h2>15. Renovación y cancelación de suscripciones</h2>
-    <p>Cuando un plan contemple renovación automática, las condiciones y plazos se informarán previamente. La cancelación podrá solicitarse mediante los mecanismos de la plataforma o escribiendo a <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a>.</p>
+      <h2>11. Datos personales y privacidad</h2>
+      <p>El tratamiento de datos personales se rige por la <a href="/privacidad">Política de Privacidad y Uso de Datos</a> de Más Sustentable, la cual forma parte integral de estos Términos.</p>
 
-    <h2>16. Derecho de retracto</h2>
-    <p>Cuando el Cliente tenga calidad de consumidor y el derecho de retracto resulte legalmente aplicable, podrá ejercerlo dentro de los plazos y formas contemplados en la legislación chilena vigente, notificando a <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a>.</p>
+      <h2>12. Sistemas automatizados e inteligencia artificial</h2>
+      <p>La Plataforma podrá utilizar sistemas automatizados o modelos de IA para procesar información y generar recomendaciones. El Usuario reconoce que estos sistemas son herramientas de apoyo que requieren revisión humana y no sustituyen el criterio profesional.</p>
 
-    <h2>17. Pruebas gratuitas y promociones</h2>
-    <p>Más Sustentable podrá ofrecer accesos de prueba o becas promocionales sujetas a requisitos y vigencias específicas, las cuales no generarán cobros involuntarios no autorizados.</p>
+      <h2>13. Planes, precios y contratación</h2>
+      <p>Los precios, modalidades de pago, periodicidad y condiciones se informarán antes de contratar. En caso de contradicción con propuestas particulares o cotizaciones acordadas por escrito, prevalecerán las condiciones particulares acordadas.</p>
 
-    <h2>18. Disponibilidad y mantenimiento</h2>
-    <p>Más Sustentable procurará la máxima operatividad y continuidad del servicio, pero no garantiza disponibilidad ininterrumpida ante mantenimientos programados, fallas de conectividad externa, ciberataques o hechos de fuerza mayor.</p>
+      <h2>14. Pagos y facturación</h2>
+      <p>El Cliente pagará los valores correspondientes al plan seleccionado a través de los medios autorizados. Ante incumplimientos de pago, Más Sustentable podrá suspender temporalmente el acceso previo aviso al correo registrado.</p>
 
-    <h2>19. Modificaciones de la Plataforma</h2>
-    <p>Podrán incorporarse o actualizarse funcionalidades para mejorar la seguridad o adaptarse a requerimientos tecnológicos y normativos, resguardando las funciones esenciales contratadas.</p>
+      <h2>15. Renovación y cancelación de suscripciones</h2>
+      <p>Cuando un plan contemple renovación automática, las condiciones y plazos se informarán previamente. La cancelación podrá solicitarse mediante los mecanismos de la plataforma o escribiendo a <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a>.</p>
 
-    <h2>20. Integraciones y servicios de terceros</h2>
-    <p>La integración con servicios externos (pasarelas de pago, servicios de nube, etc.) se regirá adicionalmente por los términos propios de cada proveedor involucrado.</p>
+      <h2>16. Derecho de retracto</h2>
+      <p>Cuando el Cliente tenga calidad de consumidor y el derecho de retracto resulte legalmente aplicable, podrá ejercerlo dentro de los plazos y formas contemplados en la legislación chilena vigente, notificando a <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a>.</p>
 
-    <h2>21. Propiedad intelectual</h2>
-    <p>Más Sustentable conserva todos los derechos sobre el software, diseño, marcas, logotipos, metodologías de evaluación, algoritmos, taxonomías y contenidos propios. Los reportes descargables podrán ser utilizados internamente por el Cliente sin alterar su sentido ni autoría.</p>
+      <h2>17. Pruebas gratuitas y promociones</h2>
+      <p>Más Sustentable podrá ofrecer accesos de prueba o becas promocionales sujetas a requisitos y vigencias específicas, las cuales no generarán cobros involuntarios no autorizados.</p>
 
-    <h2>22. Comentarios y sugerencias</h2>
-    <p>Las propuestas de mejora o comentarios enviados podrán ser utilizados para optimizar el servicio sin que ello genere contraprestaciones o derechos de autor a favor del emisor.</p>
+      <h2>18. Disponibilidad y mantenimiento</h2>
+      <p>Más Sustentable procurará la máxima operatividad y continuidad del servicio, pero no garantiza disponibilidad ininterrumpida ante mantenimientos programados, fallas de conectividad externa, ciberataques o hechos de fuerza mayor.</p>
 
-    <h2>23. Confidencialidad</h2>
-    <p>Más Sustentable resguardará la confidencialidad de la información corporativa no pública ingresada por las empresas usuarias, aplicando medidas de seguridad razonables.</p>
+      <h2>19. Modificaciones de la Plataforma</h2>
+      <p>Podrán incorporarse o actualizarse funcionalidades para mejorar la seguridad o adaptarse a requerimientos tecnológicos y normativos, resguardando las funciones esenciales contratadas.</p>
 
-    <h2>24. Seguridad</h2>
-    <p>Se implementan medidas técnicas como cifrado de datos y controles de acceso. Los Usuarios deberán mantener contraseñas seguras y reportar anomalías oportunamente.</p>
+      <h2>20. Integraciones y servicios de terceros</h2>
+      <p>La integración con servicios externos (pasarelas de pago, servicios de nube, etc.) se regirá adicionalmente por los términos propios de cada proveedor involucrado.</p>
 
-    <h2>25. Suspensión de cuentas</h2>
-    <p>Más Sustentable podrá suspender el acceso ante indicios fundados de uso fraudulento, riesgo de ciberseguridad, falta reiterada de pago o vulneración de estos Términos.</p>
+      <h2>21. Propiedad intelectual</h2>
+      <p>Más Sustentable conserva todos los derechos sobre el software, diseño, marcas, logotipos, metodologías de evaluación, algoritmos, taxonomías y contenidos propios. Los reportes descargables podrán ser utilizados internamente por el Cliente sin alterar su sentido ni autoría.</p>
 
-    <h2>26. Terminación</h2>
-    <p>El Usuario podrá solicitar el cierre de su cuenta en cualquier momento. Al concluir el servicio, cesarán los accesos y los datos serán tratados o eliminados conforme a la Política de Privacidad.</p>
+      <h2>22. Comentarios y sugerencias</h2>
+      <p>Las propuestas de mejora o comentarios enviados podrán ser utilizados para optimizar el servicio sin que ello genere contraprestaciones o derechos de autor a favor del emisor.</p>
 
-    <h2>27. Responsabilidad</h2>
-    <p>Más Sustentable responderá por daños directos derivados de incumplimientos legalmente imputables. Salvo dolo o culpa grave, en relaciones entre empresas la responsabilidad total no superará el monto pagado por el Cliente en los últimos 12 meses.</p>
+      <h2>23. Confidencialidad</h2>
+      <p>Más Sustentable resguardará la confidencialidad de la información corporativa no pública ingresada por las empresas usuarias, aplicando medidas de seguridad razonables.</p>
 
-    <h2>28. Responsabilidad del Cliente frente a terceros</h2>
-    <p>El Cliente responderá por reclamos de terceros originados en información ilícita o no autorizada incorporada por sus usuarios a la Plataforma.</p>
+      <h2>24. Seguridad</h2>
+      <p>Se implementan medidas técnicas como cifrado de datos y controles de acceso. Los Usuarios deberán mantener contraseñas seguras y reportar anomalías oportunamente.</p>
 
-    <h2>29. Fuerza mayor</h2>
-    <p>Ninguna parte será responsable por demoras o incumplimientos originados en eventos de fuerza mayor o caso fortuito imprevistos e insuperables.</p>
+      <h2>25. Suspensión de cuentas</h2>
+      <p>Más Sustentable podrá suspender el acceso ante indicios fundados de uso fraudulento, riesgo de ciberseguridad, falta reiterada de pago o vulneración de estos Términos.</p>
 
-    <h2>30. Comunicaciones</h2>
-    <p>Las notificaciones operativas se remitirán al correo registrado por el Usuario, quien tiene la responsabilidad de mantenerlo actualizado.</p>
+      <h2>26. Terminación</h2>
+      <p>El Usuario podrá solicitar el cierre de su cuenta en cualquier momento. Al concluir el servicio, cesarán los accesos y los datos serán tratados o eliminados conforme a la Política de Privacidad.</p>
 
-    <h2>31. Modificación de los Términos</h2>
-    <p>Cualquier actualización relevante de estos Términos será informada con anticipación, sin efecto retroactivo ni alteraciones a planes ya pagados durante su vigencia.</p>
+      <h2>27. Responsabilidad</h2>
+      <p>Más Sustentable responderá por daños directos derivados de incumplimientos legalmente imputables. Salvo dolo o culpa grave, en relaciones entre empresas la responsabilidad total no superará el monto pagado por el Cliente en los últimos 12 meses.</p>
 
-    <h2>32. Legislación aplicable y jurisdicción</h2>
-    <p>Estos Términos se rigen e interpretan bajo las <strong>leyes de la República de Chile</strong>. Las controversias serán sometidas a los tribunales competentes de conformidad con la ley chilena.</p>
+      <h2>28. Responsabilidad del Cliente frente a terceros</h2>
+      <p>El Cliente responderá por reclamos de terceros originados en información ilícita o no autorizada incorporada por sus usuarios a la Plataforma.</p>
 
-    <h2>33. Divisibilidad</h2>
-    <p>La eventual nulidad o inaplicabilidad de una cláusula no invalidará las restantes estipulaciones, las cuales conservarán plena vigencia.</p>
+      <h2>29. Fuerza mayor</h2>
+      <p>Ninguna parte será responsable por demoras o incumplimientos originados en eventos de fuerza mayor o caso fortuito imprevistos e insuperables.</p>
 
-    <h2>34. Integridad contractual</h2>
-    <p>Estos Términos, junto con la Política de Privacidad y las condiciones específicas del plan contratado, configuran el acuerdo íntegro entre las partes.</p>
+      <h2>30. Comunicaciones</h2>
+      <p>Las notificaciones operativas se remitirán al correo registrado por el Usuario, quien tiene la responsabilidad de mantenerlo actualizado.</p>
 
-    <h2>35. Contacto y reclamos</h2>
-    <p>Para consultas, reclamos o notificaciones formales:</p>
-    <ul>
-      <li><strong>Proveedor:</strong> Más Sustentable</li>
-      <li><strong>Razón Social:</strong> IMPACTA GLOBAL SPA</li>
-      <li><strong>RUT:</strong> 78.288.504-9</li>
-      <li><strong>Domicilio:</strong> Dario Salas 1111, Of 1401B, Coquimbo</li>
-      <li><strong>Correo:</strong> <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a></li>
-      <li><strong>Sitio web:</strong> <a href="https://www.massustentable.cl">www.massustentable.cl</a></li>
-    </ul>
-    <p><em>Más Sustentable procurará responder dentro de un plazo de 10 días hábiles, sin perjuicio de los plazos legales aplicables.</em></p>
-  </article>
-</main>
+      <h2>31. Modificación de los Términos</h2>
+      <p>Cualquier actualización relevante de estos Términos será informada con anticipación, sin efecto retroactivo ni alteraciones a planes ya pagados durante su vigencia.</p>
+
+      <h2>32. Legislación aplicable y jurisdicción</h2>
+      <p>Estos Términos se rigen e interpretan bajo las <strong>leyes de la República de Chile</strong>. Las controversias serán sometidas a los tribunales competentes de conformidad con la ley chilena.</p>
+
+      <h2>33. Divisibilidad</h2>
+      <p>La eventual nulidad o inaplicabilidad de una cláusula no invalidará las restantes estipulaciones, las cuales conservarán plena vigencia.</p>
+
+      <h2>34. Integridad contractual</h2>
+      <p>Estos Términos, junto con la Política de Privacidad y las condiciones específicas del plan contratado, configuran el acuerdo íntegro entre las partes.</p>
+
+      <h2>35. Contacto y reclamos</h2>
+      <p>Para consultas, reclamos o notificaciones formales:</p>
+      <ul>
+        <li><strong>Proveedor:</strong> Más Sustentable</li>
+        <li><strong>Razón Social:</strong> IMPACTA GLOBAL SPA</li>
+        <li><strong>RUT:</strong> 78.288.504-9</li>
+        <li><strong>Domicilio:</strong> Dario Salas 1111, Of 1401B, Coquimbo</li>
+        <li><strong>Correo:</strong> <a href="mailto:contacto@massustentable.cl">contacto@massustentable.cl</a></li>
+        <li><strong>Sitio web:</strong> <a href="https://www.massustentable.cl">www.massustentable.cl</a></li>
+      </ul>
+      <p><em>Más Sustentable procurará responder dentro de un plazo de 10 días hábiles, sin perjuicio de los plazos legales aplicables.</em></p>
+    </article>
+  </div>
+</section>
 
 <footer>
 <div class="footer-start"></div>
